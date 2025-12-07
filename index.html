@@ -1,0 +1,1246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Uber Ride Page Clone</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: #ffffff;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+    }
+
+    /* ---------------- NAVBAR (TOP) ---------------- */
+    .navbar {
+      background: #000000 !important;
+      padding: 12px 28px;
+      border-bottom: 1px solid #222;
+    }
+
+    .navbar-brand {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff !important;
+      margin-right: 18px;
+    }
+
+    .nav-link {
+      color: #cfcfcf !important;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: #ffffff !important;
+    }
+
+    .right-menu .nav-link {
+      margin-right: 10px;
+    }
+
+    .btn-signup {
+      background: #ffffff;
+      color: #000;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid #ffffff;
+    }
+
+    .btn-signup:hover {
+      background: #e8e8e8;
+    }
+
+    /* ---------------- SUB NAV LINKS ---------------- */
+    .subnav {
+      background: #ffffff;
+      border-bottom: 1px solid #f0f0f0;
+      padding: 12px 28px;
+    }
+
+    .subnav-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .subnav-links a {
+      color: #777777;
+      text-decoration: none;
+      padding: 4px;
+    }
+
+    .subnav-links a:hover {
+      color: #000;
+    }
+
+    /* ---------------- HERO SECTION ---------------- */
+    .hero {
+      padding: 40px 28px;
+    }
+
+    .hero-title {
+      font-size: 52px;
+      line-height: 1.05;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: #000;
+    }
+
+    .city-line {
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .city-line a {
+      color: #0b66ff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .promo {
+      color: #1e7a3b;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .promo span {
+      color: #777777;
+      font-weight: 400;
+      display: block;
+      margin-top: 4px;
+    }
+
+    .time-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #f5f5f5;
+      font-weight: 600;
+      margin-bottom: 14px;
+      cursor: pointer;
+    }
+
+    .ride-box {
+      max-width: 430px;
+      position: relative;
+      padding-left: 0;
+      margin-top: 6px;
+    }
+
+    .ride-box .connector {
+      position: absolute;
+      left: 26px;
+      top: 24px;
+      bottom: 24px;
+      width: 2px;
+      background: #d0d0d0;
+      z-index: 0;
+    }
+
+    .ride-row {
+      display: flex;
+      align-items: center;
+      background: #f5f5f5;
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .icon-col {
+      width: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid #000;
+      background: #ffffff;
+    }
+
+    .dot-solid {
+      background: #000000;
+    }
+
+    .ride-input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+      font-size: 15px;
+    }
+
+    .ride-input::placeholder {
+      color: #8c8c8c;
+    }
+
+    .send-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none;
+      background: #000;
+      color: #fff;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .send-btn:hover {
+      background: #222;
+    }
+
+    .actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary-uber {
+      background: #000;
+      color: #fff;
+      border-radius: 10px;
+      padding: 12px 20px;
+      border: none;
+      font-weight: 700;
+    }
+
+    .btn-secondary-uber {
+      background: #f5f5f5;
+      color: #111;
+      border-radius: 10px;
+      padding: 12px 20px;
+      border: 1px solid #e2e2e2;
+      font-weight: 600;
+    }
+
+    .hero-img {
+      width: 100%;
+      border-radius: 18px;
+      display: block;
+    }
+
+    /* --------------- SUGGESTIONS SECTION --------------- */
+    .suggestions-section {
+      padding: 40px 28px 20px;
+    }
+
+    .suggestions-title {
+      font-size: 44px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .suggestions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .suggestions-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .suggestions-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .suggestion-card {
+      background: #f8f8f8;
+      border-radius: 16px;
+      padding: 28px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .suggestion-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .suggestion-text h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .suggestion-text p {
+      font-size: 14px;
+      color: #555555;
+      line-height: 1.5;
+      max-width: 260px;
+      margin-bottom: 18px;
+    }
+
+    .suggestion-btn {
+      border: none;
+      outline: none;
+      padding: 10px 22px;
+      border-radius: 999px;
+      background: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .suggestion-btn:hover {
+      background: #f2f2f2;
+      transform: translateY(-1px);
+    }
+
+    .suggestion-icon {
+      width: 110px;
+      height: 110px;
+      border-radius: 999px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      flex-shrink: 0;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+    }
+
+    /* --------------- PLAN FOR LATER SECTION --------------- */
+    .reserve-section {
+      padding: 30px 28px 60px;
+    }
+
+    .reserve-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .reserve-card {
+      background: #b9e4ea;
+      border-radius: 24px;
+      padding: 28px 30px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .reserve-heading {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .reserve-sub {
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .reserve-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #777777;
+      margin-bottom: 4px;
+    }
+
+    .reserve-input-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .reserve-input-box {
+      flex: 1;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      border: 1px solid #e3e3e3;
+      min-width: 150px;
+    }
+
+    .reserve-input-box span.left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .reserve-next-btn {
+      width: 100%;
+      background: #000;
+      color: #fff;
+      border-radius: 12px;
+      border: none;
+      padding: 12px 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .reserve-img {
+      width: 100%;
+      max-width: 260px;
+      display: block;
+      margin-left: auto;
+    }
+
+    /* Benefits box */
+    .reserve-benefits {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid #e5e5e5;
+      padding: 22px 24px;
+      height: 100%;
+    }
+
+    .reserve-benefits h4 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .benefit-item {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 14px;
+    }
+
+    .benefit-item:last-child {
+      border-bottom: none;
+    }
+
+    .benefit-icon {
+      width: 20px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .reserve-terms {
+      font-size: 13px;
+      color: #555;
+      margin-top: 14px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* --------------- TRAVEL CARDS SECTION --------------- */
+    .travel-section {
+      padding: 40px 28px 60px;
+    }
+
+    .travel-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .travel-card {
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .travel-img {
+      width: 80%;
+      border-radius: 6px;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .travel-heading {
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .travel-text {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .travel-btn {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .travel-btn:hover {
+      background: #222;
+    }
+
+    /* --------------- BUSINESS SOLUTIONS SECTION --------------- */
+    .business-section {
+      background: #000;
+      padding: 70px 28px;
+      color: #fff;
+    }
+
+    .business-title {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 25px;
+      line-height: 1.2;
+    }
+
+    /* --------------- FAQ SECTION --------------- */
+    .faq-section {
+      padding: 60px 28px 40px;
+      background: #ffffff;
+    }
+
+    .faq-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 30px;
+    }
+
+    .accordion.faq-accordion .accordion-item {
+      border: none;
+      border-bottom: 1px solid #e5e5e5;
+      border-radius: 0;
+    }
+
+    .accordion.faq-accordion .accordion-button {
+      padding: 18px 0;
+      font-size: 16px;
+      font-weight: 500;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .accordion.faq-accordion .accordion-button:not(.collapsed) {
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .accordion.faq-accordion .accordion-button:focus {
+      box-shadow: none;
+    }
+
+    .accordion.faq-accordion .accordion-body {
+      padding: 0 0 16px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* --------------- FOOTER SECTION --------------- */
+    .footer-section {
+      background: #000;
+      color: #fff;
+      padding: 60px 28px 40px;
+    }
+
+    .footer-logo {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .footer-help {
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .footer-link {
+      display: block;
+      color: #e5e5e5;
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 6px;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+
+    .footer-social {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-social-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .footer-store-buttons {
+      margin-top: 10px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .store-btn {
+      background: #111;
+      border-radius: 8px;
+      padding: 8px 14px;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      border: 1px solid #333;
+      min-width: 150px;
+    }
+
+    .store-small {
+      font-size: 10px;
+      color: #aaaaaa;
+    }
+
+    .store-big {
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .footer-bottom-row {
+      margin-top: 30px;
+      font-size: 13px;
+      color: #bbbbbb;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-bottom-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Bottom see prices bar */
+    .bottom-see-prices {
+      background: #000;
+      padding: 14px 24px;
+      text-align: center;
+    }
+
+    .bottom-see-prices button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Uber</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMenu">
+
+        <!-- LEFT -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#">Ride</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Drive</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Business</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">About us</a></li>
+              <li><a class="dropdown-item" href="#">How Uber works</a></li>
+              <li><a class="dropdown-item" href="#">Newsroom</a></li>
+              <li><a class="dropdown-item" href="#">Careers</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- RIGHT -->
+        <ul class="navbar-nav right-menu align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#">🌐EN</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Log in</a></li>
+          <li class="nav-item"><button class="btn-signup">Sign up</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECOND NAV LINKS -->
+  <div class="subnav">
+    <div class="subnav-links">
+      <a href="#">Request a ride</a>
+      <a href="#">Reserve a ride</a>
+      <a href="#">See prices</a>
+      <a href="#">Explore ride options</a>
+      <a href="#">Airport rides</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container-fluid">
+      <div class="row g-4 align-items-start">
+
+        <!-- LEFT -->
+        <div class="col-lg-6">
+
+          <p class="city-line">
+            📍 Hyderabad, IN
+            <a href="#">Change city</a>
+          </p>
+
+          <h1 class="hero-title">Request a ride for<br>now or later</h1>
+
+          <p class="promo">
+            Up to 50% off your first 5 Uber rides. T&Cs apply.*
+            <span>*Valid within 15 days of signup.</span>
+          </p>
+
+          <div class="time-chip">Pickup now ▼</div>
+
+          <!-- Pickup / Drop Box -->
+          <div class="ride-box">
+            <div class="connector"></div>
+
+            <!-- Pickup -->
+            <div class="ride-row">
+              <div class="icon-col">
+                <span class="dot dot-solid"></span>
+              </div>
+              <input class="ride-input" type="text" placeholder="Pickup location">
+              <button class="send-btn">➤</button>
+            </div>
+
+            <!-- Drop -->
+            <div class="ride-row">
+              <div class="icon-col">
+                <span class="dot dot-solid"></span>
+              </div>
+              <input class="ride-input" type="text" placeholder="Dropoff location">
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="actions">
+            <button class="btn-primary-uber">See prices</button>
+            <button class="btn-secondary-uber">Schedule for later</button>
+          </div>
+
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="col-lg-6">
+          <img class="hero-img" src="https://dianapps.com/blog/wp-content/uploads/2022/12/1080600.png" alt="">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SUGGESTIONS SECTION -->
+  <section class="suggestions-section">
+    <div class="container-fluid">
+      <h2 class="suggestions-title">Suggestions</h2>
+
+      <div class="suggestions-grid">
+        <!-- Ride -->
+        <div class="suggestion-card">
+          <div class="suggestion-text">
+            <h2>Ride</h2>
+            <p>Go anywhere with Uber. Request a ride, hop in, and go.</p>
+            <button class="suggestion-btn">Details</button>
+          </div>
+          <div class="suggestion-icon">🚗</div>
+        </div>
+
+        <!-- Reserve -->
+        <div class="suggestion-card">
+          <div class="suggestion-text">
+            <h2>Reserve</h2>
+            <p>Reserve your ride in advance so you can relax on the day of your trip.</p>
+            <button class="suggestion-btn">Details</button>
+          </div>
+          <div class="suggestion-icon">📅</div>
+        </div>
+
+        <!-- Intercity -->
+        <div class="suggestion-card">
+          <div class="suggestion-text">
+            <h2>Intercity</h2>
+            <p>Get convenient, affordable outstation cabs anytime at your doorstep.</p>
+            <button class="suggestion-btn">Details</button>
+          </div>
+          <div class="suggestion-icon">🧳</div>
+        </div>
+
+        <!-- Courier -->
+        <div class="suggestion-card">
+          <div class="suggestion-text">
+            <h2>Courier</h2>
+            <p>Uber makes same-day item delivery easier than ever.</p>
+            <button class="suggestion-btn">Details</button>
+          </div>
+          <div class="suggestion-icon">📦</div>
+        </div>
+
+        <!-- Rentals -->
+        <div class="suggestion-card">
+          <div class="suggestion-text">
+            <h2>Rentals</h2>
+            <p>Request a trip for a block of time and make multiple stops.</p>
+            <button class="suggestion-btn">Details</button>
+          </div>
+          <div class="suggestion-icon">⏱️</div>
+        </div>
+
+        <!-- Bike -->
+        <div class="suggestion-card">
+          <div class="suggestion-text">
+            <h2>Bike</h2>
+            <p>Get affordable motorbike rides in minutes at your doorstep.</p>
+            <button class="suggestion-btn">Details</button>
+          </div>
+          <div class="suggestion-icon">🏍️</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN FOR LATER -->
+  <section class="reserve-section">
+    <div class="container-fluid">
+
+      <h2 class="reserve-title">Plan for later</h2>
+
+      <div class="row g-4">
+
+        <!-- Left box -->
+        <div class="col-lg-8">
+          <div class="reserve-card">
+            <div class="row w-100 g-3 align-items-center">
+
+              <div class="col-md-6">
+
+                <h3 class="reserve-heading">Get your ride right<br>with Uber Reserve</h3>
+                <p class="reserve-sub">Choose date and time</p>
+
+                <div class="reserve-label">Date</div>
+
+                <div class="reserve-input-row">
+
+                  <div class="reserve-input-box">
+                    <span class="left">
+                      <span class="icon">📅</span>
+                      <span>Date</span>
+                    </span>
+                    <span>▼</span>
+                  </div>
+
+                  <div class="reserve-input-box">
+                    <span class="left">
+                      <span class="icon">⏱️</span>
+                      <span>Time</span>
+                    </span>
+                    <span>▼</span>
+                  </div>
+
+                </div>
+
+                <button class="reserve-next-btn">Next</button>
+
+              </div>
+
+              <div class="col-md-6 text-center">
+                <img class="reserve-img" src="C:\Users\chell\Downloads\ub.jpeg" alt="">
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Right benefits -->
+        <div class="col-lg-4">
+          <div class="reserve-benefits">
+            <h4>Benefits</h4>
+
+            <div class="benefit-item">
+              <span class="benefit-icon">📅</span>
+              <span>Choose your exact pickup time up to 90 days in advance.</span>
+            </div>
+
+            <div class="benefit-item">
+              <span class="benefit-icon">⏰</span>
+              <span>Extra wait time included to meet your ride.</span>
+            </div>
+
+            <div class="benefit-item">
+              <span class="benefit-icon">☰</span>
+              <span>Cancel at no charge up to 60 minutes in advance.</span>
+            </div>
+
+            <div class="reserve-terms">See terms</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAVEL CARDS SECTION -->
+  <section class="travel-section">
+    <div class="container-fluid">
+      <h2 class="travel-title">Use the Uber app to help you travel your way</h2>
+
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-lg-4">
+          <div class="travel-card">
+            <img
+              class="travel-img"
+              src="https://cn-geo1.uber.com/image-proc/crop/resizecrop/udam/format=auto/width=768/height=768/srcb64=aHR0cHM6Ly90Yi1zdGF0aWMudWJlci5jb20vcHJvZC91ZGFtLWFzc2V0cy81NGY2MDE2MS1jZjZiLTQ0MDEtYTMwOS04YmIxOTZjMDAxNGMuanBn"
+              alt="Ride options image">
+            <h3 class="travel-heading">Ride options</h3>
+            <p class="travel-text">
+              There’s more than one way to move with Uber, no matter where you are or where you’re going.
+            </p>
+            <button class="travel-btn">Search ride options</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-lg-4">
+          <div class="travel-card">
+            <img
+              class="travel-img"
+              src="https://cn-geo1.uber.com/image-proc/crop/resizecrop/udam/format=auto/width=768/height=768/srcb64=aHR0cHM6Ly90Yi1zdGF0aWMudWJlci5jb20vcHJvZC91ZGFtLWFzc2V0cy9mOWJhMjdjNC02NjVjLTRjY2EtODE2MS05ZTNmODdmNDk5OTQucG5n"
+              alt="Airports image">
+            <h3 class="travel-heading">700+ airports</h3>
+            <p class="travel-text">
+              You can request a ride to and from most major airports. Schedule a ride to the airport for one less thing to worry about.
+            </p>
+            <button class="travel-btn">Search airports</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-lg-4">
+          <div class="travel-card">
+            <img
+              class="travel-img"
+              src="https://cn-geo1.uber.com/image-proc/crop/resizecrop/udam/format=auto/width=768/height=768/srcb64=aHR0cHM6Ly90Yi1zdGF0aWMudWJlci5jb20vcHJvZC91ZGFtLWFzc2V0cy9iOGMzOWRlMC02ZTEzLTQ4NWItYmE0NS02NjUxMTE3MGM2MmEuanBn"
+              alt="Cities image">
+            <h3 class="travel-heading">15,000+ cities</h3>
+            <p class="travel-text">
+              The app is available in thousands of cities worldwide, so you can request a ride even when you’re far from home.
+            </p>
+            <button class="travel-btn">Search cities</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS SOLUTIONS SECTION -->
+  <section class="business-section">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+
+        <!-- Left Text -->
+        <div class="col-lg-6">
+          <h1 class="business-title">
+            Looking for business<br>solutions?
+          </h1>
+
+          <p style="font-size:18px; margin-bottom:20px; color:#e5e5e5;">
+            Get information about how companies leverage
+            <a href="#" style="color:#fff; text-decoration:underline;">Uber for Business</a>:
+          </p>
+
+          <ul style="margin-left:20px; margin-bottom:30px; line-height:2;">
+            <li><a href="#" style="color:#fff; text-decoration:underline; font-size:18px;">Business travel</a></li>
+            <li><a href="#" style="color:#fff; text-decoration:underline; font-size:18px;">Courtesy rides</a></li>
+            <li><a href="#" style="color:#fff; text-decoration:underline; font-size:18px;">Meal programs</a></li>
+            <li><a href="#" style="color:#fff; text-decoration:underline; font-size:18px;">Item delivery</a></li>
+          </ul>
+
+          <div style="display:flex; align-items:center; gap:25px; flex-wrap:wrap;">
+            <button style="
+              background:#fff;
+              color:#000;
+              padding:12px 26px;
+              font-size:16px;
+              font-weight:600;
+              border:none;
+              border-radius:10px;
+            ">
+              Get started
+            </button>
+
+            <a href="#" style="
+              color:#fff;
+              font-size:16px;
+              font-weight:500;
+              text-decoration:underline;
+            ">
+              Check out our solutions
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="col-lg-6 text-center">
+          <img
+            src="https://cn-geo1.uber.com/image-proc/crop/resizecrop/udam/format=auto/width=1152/height=648/srcb64=aHR0cHM6Ly90Yi1zdGF0aWMudWJlci5jb20vcHJvZC91ZGFtLWFzc2V0cy9kNjQ4ZjViNi1iYjVmLTQ1MGUtODczMy05MGFlZmVjYmQwOWUuanBn"
+            alt="Uber business dashboard"
+            style="width:100%; max-width:620px; border-radius:4px;">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <div class="container-fluid">
+      <h2 class="faq-title">Frequently asked questions</h2>
+
+      <div class="accordion faq-accordion" id="faqAccordion">
+        <!-- Q1 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeading1">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faqCollapse1"
+                    aria-expanded="false" aria-controls="faqCollapse1">
+              Can I have a lost item delivered to me?
+            </button>
+          </h2>
+          <div id="faqCollapse1" class="accordion-collapse collapse"
+               aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              In many cities, you may be able to contact your driver through the app and
+              arrange to have a lost item returned. Availability depends on local policies.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeading2">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faqCollapse2"
+                    aria-expanded="false" aria-controls="faqCollapse2">
+              Can I rent a car using Uber?
+            </button>
+          </h2>
+          <div id="faqCollapse2" class="accordion-collapse collapse"
+               aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Some regions offer vehicle rental or long-term ride options. Check the app
+              in your city to see what services are currently available.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeading3">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faqCollapse3"
+                    aria-expanded="false" aria-controls="faqCollapse3">
+              Can I request a ride that picks up friends in different locations?
+            </button>
+          </h2>
+          <div id="faqCollapse3" class="accordion-collapse collapse"
+               aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              You can add stops to your trip in the Uber app so that your driver can pick
+              up or drop off multiple riders along the way.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeading4">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faqCollapse4"
+                    aria-expanded="false" aria-controls="faqCollapse4">
+              Can I request a taxi on Uber?
+            </button>
+          </h2>
+          <div id="faqCollapse4" class="accordion-collapse collapse"
+               aria-labelledby="faqHeading4" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              In select cities, traditional taxis are available as one of the ride options
+              in the app. Availability varies based on your location.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeading5">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faqCollapse5"
+                    aria-expanded="false" aria-controls="faqCollapse5">
+              Is there an Uber ride option for 5 people?
+            </button>
+          </h2>
+          <div id="faqCollapse5" class="accordion-collapse collapse"
+               aria-labelledby="faqHeading5" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              In many areas, larger vehicle options like UberXL can seat more passengers.
+              Open the app to see which ride types are offered in your city.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION (like screenshot) -->
+  <footer class="footer-section">
+    <div class="container-fluid">
+      <!-- Top logo + help -->
+      <div class="row mb-4">
+        <div class="col-lg-6">
+          <div class="footer-logo">Uber</div>
+          <div class="footer-help">Visit Help Center</div>
+        </div>
+      </div>
+
+      <!-- Columns -->
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="footer-column-title">Company</div>
+          <a href="#" class="footer-link">About us</a>
+          <a href="#" class="footer-link">Our offerings</a>
+          <a href="#" class="footer-link">Newsroom</a>
+          <a href="#" class="footer-link">Investors</a>
+          <a href="#" class="footer-link">Blog</a>
+          <a href="#" class="footer-link">Careers</a>
+          <a href="#" class="footer-link">Uber One</a>
+        </div>
+
+        <div class="col-md-3">
+          <div class="footer-column-title">Products</div>
+          <a href="#" class="footer-link">Ride</a>
+          <a href="#" class="footer-link">Drive</a>
+          <a href="#" class="footer-link">Eat</a>
+          <a href="#" class="footer-link">Uber for Business</a>
+          <a href="#" class="footer-link">Uber Freight</a>
+          <a href="#" class="footer-link">Gift cards</a>
+          <a href="#" class="footer-link">Uber Health</a>
+        </div>
+
+        <div class="col-md-3">
+          <div class="footer-column-title">Global citizenship</div>
+          <a href="#" class="footer-link">Safety</a>
+          <a href="#" class="footer-link">Sustainability</a>
+        </div>
+
+        <div class="col-md-3">
+          <div class="footer-column-title">Travel</div>
+          <a href="#" class="footer-link">Reserve</a>
+          <a href="#" class="footer-link">Airports</a>
+          <a href="#" class="footer-link">Cities</a>
+        </div>
+      </div>
+
+      <!-- Social + Store buttons -->
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="footer-social">
+            <div class="footer-social-icon">in</div>
+            <div class="footer-social-icon">▶</div>
+            <div class="footer-social-icon">◎</div>
+            <div class="footer-social-icon">X</div>
+          </div>
+
+          <div class="footer-store-buttons">
+            <div class="store-btn">
+              <div class="store-small">GET IT ON</div>
+              <div class="store-big">Google Play</div>
+            </div>
+            <div class="store-btn">
+              <div class="store-small">Download on the</div>
+              <div class="store-big">App Store</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom language & location row -->
+      <div class="footer-bottom-row">
+        <span>🌐 English</span>
+        <span>📍 Hyderabad</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bottom full-width bar -->
+  <div class="bottom-see-prices">
+    <button>See prices</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
